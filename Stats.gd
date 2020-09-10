@@ -11,17 +11,17 @@ signal max_health_changed(value)
 
 
 func set_max_health(value):
-	max_health = value
-	self.health = min(health, max_health)  # our health can never be larger than max_health
-	emit_signal("max_health_changed", max_health)
+    max_health = value
+    self.health = min(health, max_health)  # our health can never be larger than max_health
+    emit_signal("max_health_changed", max_health)
 
 
 func set_health(value):
-	health = value
-	emit_signal("health_changed", health)
-	if health <= 0:
-		emit_signal("no_health")
+    health = value
+    emit_signal("health_changed", health)
+    if health <= 0:
+        emit_signal("no_health")
 
 
 func _ready():
-	self.health = max_health
+    self.health = max_health

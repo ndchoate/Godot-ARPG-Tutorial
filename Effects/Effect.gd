@@ -1,10 +1,10 @@
 extends AnimatedSprite
 
 func _ready():
-	# Want to make sure that we start on the first frame before we animate
-	connect("animation_finished", self, "_on_animation_finished")
-	frame = 0
-	play("Animate")
+    # Want to make sure that we start on the first frame before we animate
+    connect("animation_finished", self, "_on_animation_finished")
+    frame = 0
+    play("Animate")
 
 # Sometimes this can be useful for debugging
 #func _process(delta):
@@ -14,5 +14,5 @@ func _ready():
 
 
 func _on_animation_finished():
-	# When the animation finishes, this grass effect will destroy itself
-	queue_free()
+    # When the animation finishes, this grass effect will destroy itself
+    queue_free()

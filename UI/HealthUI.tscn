@@ -17,6 +17,9 @@ margin_right = 59.0
 margin_bottom = 11.0
 texture = ExtResource( 2 )
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HeartUIFull" type="TextureRect" parent="."]
 margin_right = 59.0
