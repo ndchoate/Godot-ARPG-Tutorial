@@ -12,8 +12,15 @@ export var FRICTION = 500
 enum {
     MOVE,
     ROLL,
-    ATTACK
+    ATTACK,
+    CHARGE_ATTACK
 }
+
+# Name gives the name of this node. All of the players should be on the same
+# level in the same tree, so giving them the name "player_player" or "player_player2"
+# should be enough to make it unique and avoid anything else in the game overwriting
+# the data
+onready var SAVE_KEY = "player_" + name
 
 var state = MOVE
 var velocity = Vector2.ZERO
@@ -42,7 +49,13 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
+# Track whether the user is charing up for a power attack
+onready var chargingAttack = false
+onready var chargeStartTime = 0
+
+
 func _ready():
+    print("In _ready of Player")
     # By default, Godot will choose the same seed for all of its RNGs. This can
     # be useful for debugging, but randomize() can be used to change that
     randomize()
@@ -69,6 +82,9 @@ func _physics_process(delta):
             
         ATTACK:
             attack_state(delta)
+            
+        CHARGE_ATTACK:
+            charge_attack_state(delta)
 
 
 func move_state(delta):
@@ -123,7 +139,29 @@ func move_state(delta):
         state = ROLL
     
     if Input.is_action_just_pressed("attack%s" % ID):
+#        state = ATTACK
+        state = CHARGE_ATTACK
+        chargingAttack = true
+        chargeStartTime = OS.get_ticks_msec()
+        
+
+
+func charge_attack_state(delta):
+    var currentChargeTime = OS.get_ticks_msec()
+    var totalChargeTime = currentChargeTime - chargeStartTime
+
+    if Input.is_action_pressed("attack%s" % ID):
+        if totalChargeTime >= 1500:
+            blinkAnimationPlayer.play("Start")
+    elif Input.is_action_just_released("attack%s" % ID):
         state = ATTACK
+        blinkAnimationPlayer.play("Stop")
+        chargingAttack = false
+        chargeStartTime = 0
+        if totalChargeTime >= 1500:
+            # TODO: Adjust damage to be 2 here
+            pass
+        
 
 
 func attack_state(delta):
@@ -168,3 +206,23 @@ func _on_Hurtbox_invincibility_started():
 
 func _on_Hurtbox_invincibility_ended():
     blinkAnimationPlayer.play("Stop")
+    
+
+func save():
+    # save_game.data[SAVE_KEY] = stats
+    # The Godot doc's way of doing things:
+    var save_dict = {
+        "filename": get_filename(),
+        "parent": get_parent().get_path(),
+        "current_health": stats.health,
+        "max_health": stats.max_health,
+        "pos_x": position.x,
+        "pos_y": position.y
+        #"animationTree": animationTree,
+        #"animationState": animationState
+       }
+    
+    return save_dict
+
+func load(save_game):
+    stats = save_game.data[SAVE_KEY]

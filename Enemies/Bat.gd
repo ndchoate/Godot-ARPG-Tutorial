@@ -7,6 +7,9 @@ export var MAX_SPEED = 50
 export var FRICTION = 200
 export var WANDER_TOLERANCE = 4
 
+# Maybe this doesn't need to be an export var?
+export var TEXTURE_HEIGHT = 24
+
 enum {
     IDLE,
     WANDER,
@@ -25,9 +28,19 @@ onready var hurtbox = $Hurtbox
 onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
+onready var enemyHealthUI = $EnemyHealthUI
 
 
 func _ready():
+    enemyHealthUI.set_max_hearts(stats.max_health)
+    enemyHealthUI.set_hearts(stats.health)
+    
+    # Center the health UI based on its size, calculate the Y pos by adding
+    # the height of the bat texture to the height of the heart texture
+    var healthXPos = -1 * (enemyHealthUI.get_size().x / 2)
+    var healthYPos = -1 * (TEXTURE_HEIGHT + 11)
+    enemyHealthUI.set_position(Vector2(healthXPos, healthYPos))
+    
     state = pick_random_state([IDLE, WANDER])
 
 
@@ -101,6 +114,7 @@ func pick_random_state(state_list):
 func _on_Hurtbox_area_entered(area):
     # area is the Hitbox scene (SwordHitbox, in this case)
     stats.health -= area.damage
+    enemyHealthUI.set_hearts(stats.health)
     knockback = area.knockback_vector * 150
     hurtbox.create_hit_effect()
     hurtbox.start_invincibility(0.4)
@@ -111,6 +125,10 @@ func _on_Stats_no_health():
     var enemyDeathEffect = EnemyDeathEffect.instance()
     get_parent().add_child(enemyDeathEffect)
     enemyDeathEffect.global_position = global_position
+    
+    
+func _on_Stats_health_changed(health):
+    enemyHealthUI.set_hearts(health)
 
 
 func _on_Hurtbox_invincibility_started():

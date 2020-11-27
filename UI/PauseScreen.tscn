@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/montserrat_76.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/PauseScreen.gd" type="Script" id=2]
+[ext_resource path="res://UI/montserrat_62.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Buttons/SaveButton.gd" type="Script" id=4]
+[ext_resource path="res://UI/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
+
+[node name="PauseScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="ColorRect" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Popup"]
+anchor_top = 0.00333333
+anchor_bottom = 0.00333333
+margin_top = 168.0
+margin_right = 1580.0
+margin_bottom = 262.0
+custom_fonts/font = ExtResource( 1 )
+text = "Paused"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="Popup"]
+margin_left = 2.0
+margin_top = 272.0
+margin_right = 1582.0
+margin_bottom = 346.0
+custom_fonts/font = ExtResource( 3 )
+text = "Save Game"
+flat = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LoadButton" parent="Popup" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 354.0
+margin_right = 1580.0
+margin_bottom = 429.0
+[connection signal="pressed" from="Popup/SaveButton" to="Popup/SaveButton" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Popup/LoadButton" to="Popup/LoadButton" method="_on_MenuButton_pressed"]
