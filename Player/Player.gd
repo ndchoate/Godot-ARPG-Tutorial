@@ -118,6 +118,7 @@ func move_state(delta):
         
         # Setting the blend position in here makes it so that our character will
         # be stuck in a position once they dedicate to an attack
+        animationTree.set("parameters/AttackSetup/blend_position", input_vector)
         animationTree.set("parameters/Attack/blend_position", input_vector)
         animationTree.set("parameters/Roll/blend_position", input_vector)
         
@@ -140,6 +141,7 @@ func move_state(delta):
     
     if Input.is_action_just_pressed("attack%s" % ID):
 #        state = ATTACK
+        animationState.travel("AttackSetup")
         state = CHARGE_ATTACK
         chargingAttack = true
         chargeStartTime = OS.get_ticks_msec()
