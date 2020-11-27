@@ -153,7 +153,7 @@ func charge_attack_state(delta):
     var totalChargeTime = currentChargeTime - chargeStartTime
 
     if Input.is_action_pressed("attack%s" % ID):
-        if totalChargeTime >= 1500:
+        if totalChargeTime >= 750:
             blinkAnimationPlayer.play("Start")
     elif Input.is_action_just_released("attack%s" % ID):
         state = ATTACK

@@ -20,7 +20,7 @@ radius = 4.0
 height = 6.0
 
 [sub_resource type="Animation" id=3]
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/Sprite:frame")
 tracks/0/interp = 1
@@ -28,10 +28,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 36, 37, 38, 39 ]
+"values": [ 37, 38, 39 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -40,7 +40,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -66,7 +66,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -83,11 +83,11 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 7 )
 } ],
-"times": PoolRealArray( 0.1 )
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=4]
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/Sprite:frame")
 tracks/0/interp = 1
@@ -95,10 +95,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 32, 33, 34, 35 ]
+"values": [ 33, 34, 35 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -107,7 +107,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -133,7 +133,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -150,11 +150,11 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 7 )
 } ],
-"times": PoolRealArray( 0.1 )
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=5]
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/Sprite:frame")
 tracks/0/interp = 1
@@ -162,10 +162,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 24, 25, 26, 27 ]
+"values": [ 25, 26, 27 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -174,7 +174,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -200,7 +200,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -217,11 +217,11 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 7 )
 } ],
-"times": PoolRealArray( 0.1 )
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=6]
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/Sprite:frame")
 tracks/0/interp = 1
@@ -229,10 +229,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 28, 29, 30, 31 ]
+"values": [ 29, 30, 31 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -241,7 +241,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -267,7 +267,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -284,7 +284,7 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 7 )
 } ],
-"times": PoolRealArray( 0.1 )
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=68]
@@ -923,7 +923,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 36
+frame = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -973,7 +973,7 @@ parameters/Run/blend_position = Vector2( 0, 1 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 position = Vector2( 0, -4 )
-rotation = 1.5708
+rotation = 4.71239
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource( 3 )]
 position = Vector2( 15, 0 )
