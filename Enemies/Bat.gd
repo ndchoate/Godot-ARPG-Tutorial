@@ -36,9 +36,10 @@ func _ready():
     enemyHealthUI.set_hearts(stats.health)
     
     # Center the health UI based on its size, calculate the Y pos by adding
-    # the height of the bat texture to the height of the heart texture
+    # the height of the bat texture to the height of the health bar texture 
+    # (plus a 2 pixel buffer)
     var healthXPos = -1 * (enemyHealthUI.get_size().x / 2)
-    var healthYPos = -1 * (TEXTURE_HEIGHT + 11)
+    var healthYPos = -1 * (TEXTURE_HEIGHT + 8)
     enemyHealthUI.set_position(Vector2(healthXPos, healthYPos))
     
     state = pick_random_state([IDLE, WANDER])

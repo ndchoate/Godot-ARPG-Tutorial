@@ -101,16 +101,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -28.0
-margin_top = -36.0
-margin_right = 28.0
-margin_bottom = -20.0
+margin_left = -16.0
+margin_top = -30.0
+margin_right = 16.0
+margin_bottom = -24.0
+
+[node name="Stats" parent="." instance=ExtResource( 5 )]
+max_health = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 1 )
 frames = SubResource( 7 )
 animation = "AnimationFly"
-frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -126,9 +128,6 @@ shape = SubResource( 8 )
 visible = false
 position = Vector2( 0, -13 )
 shape = SubResource( 9 )
-
-[node name="Stats" parent="." instance=ExtResource( 5 )]
-max_health = 2
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
 
@@ -155,9 +154,9 @@ shape = SubResource( 12 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Start = SubResource( 13 )
 anims/Stop = SubResource( 14 )
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
-[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
 [editable path="SoftCollision"]
