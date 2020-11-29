@@ -29,7 +29,7 @@ var velocity = Vector2.ZERO
 # place. We start out facing down, so init with that
 var roll_vector = Vector2.DOWN
 
-# Grab the global singleton, PlayerStats
+# Grab the global singletons, PlayerStats and DamageManager
 #var stats = PlayerStats
 onready var stats = $PlayerStats
 
@@ -160,9 +160,9 @@ func charge_attack_state(delta):
         blinkAnimationPlayer.play("Stop")
         chargingAttack = false
         chargeStartTime = 0
-        if totalChargeTime >= 1500:
-            # TODO: Adjust damage to be 2 here
-            pass
+        if totalChargeTime >= 750:
+            # Adjust the damage if the player charged their attack long enough
+            swordHitbox.damage = 2
         
 
 
@@ -173,6 +173,9 @@ func attack_state(delta):
 
 
 func attack_animation_finished():
+    if swordHitbox.damage == 2:
+        # Reset attack damage to 1 if we're finishing a power attack
+        swordHitbox.damage = 1
     state = MOVE
 
 

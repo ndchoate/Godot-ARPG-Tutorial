@@ -30,6 +30,7 @@ config/Version="0.2.0"
 SaveAndLoadUtils="*res://Saving/SaveAndLoadUtils.tscn"
 TitleScreen="*res://UI/TitleScreen.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
+DamageManager="*res://Player/DamageManager.tscn"
 
 [display]
 
