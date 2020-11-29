@@ -30,7 +30,6 @@ config/Version="0.2.0"
 SaveAndLoadUtils="*res://Saving/SaveAndLoadUtils.tscn"
 TitleScreen="*res://UI/TitleScreen.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
-DamageManager="*res://Player/DamageManager.tscn"
 
 [display]
 
@@ -163,6 +162,11 @@ save_game={
 load_game={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777252,"unicode":0,"echo":false,"script":null)
+ ]
+}
+shield1={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

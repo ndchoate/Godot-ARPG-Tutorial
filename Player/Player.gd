@@ -13,7 +13,8 @@ enum {
     MOVE,
     ROLL,
     ATTACK,
-    CHARGE_ATTACK
+    CHARGE_ATTACK,
+    SHIELD
 }
 
 # Name gives the name of this node. All of the players should be on the same
@@ -85,6 +86,9 @@ func _physics_process(delta):
             
         CHARGE_ATTACK:
             charge_attack_state(delta)
+            
+        SHIELD:
+            shield_state(delta)
 
 
 func move_state(delta):
@@ -121,6 +125,7 @@ func move_state(delta):
         animationTree.set("parameters/AttackSetup/blend_position", input_vector)
         animationTree.set("parameters/Attack/blend_position", input_vector)
         animationTree.set("parameters/Roll/blend_position", input_vector)
+        animationTree.set("parameters/Shield/blend_position", input_vector)
         
         # Set our animation at this point in time to be "Run" (this is what we 
         # defined in the AnimationTree as a BlendSpace2D)
@@ -146,7 +151,10 @@ func move_state(delta):
         chargingAttack = true
         chargeStartTime = OS.get_ticks_msec()
         
-
+    if Input.is_action_just_pressed("shield%s" % ID):
+        animationState.travel("Shield")
+        state = SHIELD
+        
 
 func charge_attack_state(delta):
     var currentChargeTime = OS.get_ticks_msec()
@@ -189,6 +197,16 @@ func roll_animation_finished():
     # to reduce the sliding, you can lower the velocity once the animation finishes
     velocity = velocity * .75
     state = MOVE
+
+
+func shield_state(delta):
+    if Input.is_action_just_released("shield%s" % ID):
+        state = MOVE
+
+
+func shield_animation_finished():
+#    state = MOVE
+    pass
 
 
 func move():
