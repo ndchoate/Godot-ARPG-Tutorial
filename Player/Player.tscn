@@ -742,7 +742,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ShieldHitboxPivot/ShieldHitbox/ShieldCollisionShape2D:position")
+tracks/2/path = NodePath("ShieldHitboxPivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -751,10 +751,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 11.6153, -5.65008 ) ]
+"values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ShieldHitboxPivot/ShieldHitbox/ShieldCollisionShape2D:rotation_degrees")
+tracks/3/path = NodePath("ShieldHitboxPivot/ShieldHitbox/ShieldCollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -763,7 +763,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 180.0 ]
+"values": [ Vector2( -6, -12 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -796,7 +796,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ShieldHitboxPivot/ShieldHitbox/ShieldCollisionShape2D:position")
+tracks/2/path = NodePath("ShieldHitboxPivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -805,10 +805,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2.43841, -13.4283 ) ]
+"values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ShieldHitboxPivot/ShieldHitbox/ShieldCollisionShape2D:rotation_degrees")
+tracks/3/path = NodePath("ShieldHitboxPivot/ShieldHitbox/ShieldCollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -817,7 +817,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 270.0 ]
+"values": [ Vector2( 4, 13 ) ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -1144,11 +1144,11 @@ graph_offset = Vector2( -23.853, 105.13 )
 [sub_resource type="CapsuleShape2D" id=73]
 height = 12.0
 
-[sub_resource type="CapsuleShape2D" id=75]
+[sub_resource type="CapsuleShape2D" id=74]
 radius = 5.65078
 height = 9.26031
 
-[sub_resource type="CapsuleShape2D" id=74]
+[sub_resource type="CapsuleShape2D" id=75]
 radius = 5.0
 height = 6.0
 
@@ -1166,7 +1166,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
 hframes = 64
-frame = 61
+frame = 63
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -1230,23 +1230,27 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2( -9.53674e-07, 0 )
 shape = SubResource( 73 )
+disabled = true
 
 [node name="ShieldHitboxPivot" type="Position2D" parent="."]
+rotation = 3.14159
 
 [node name="ShieldHitbox" parent="ShieldHitboxPivot" instance=ExtResource( 3 )]
+collision_mask = 8
 script = ExtResource( 11 )
 
 [node name="ShieldCollisionShape2D" type="CollisionShape2D" parent="ShieldHitboxPivot/ShieldHitbox"]
-position = Vector2( -0.405478, -0.435165 )
+position = Vector2( 4, 13 )
 rotation = 4.71239
-shape = SubResource( 75 )
+shape = SubResource( 74 )
+one_way_collision_margin = 0.0
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
 collision_layer = 4
 
 [node name="HurtboxCollisionShape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, -4 )
-shape = SubResource( 74 )
+shape = SubResource( 75 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
