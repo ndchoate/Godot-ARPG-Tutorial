@@ -113,7 +113,7 @@ max_health = 3
 material = SubResource( 1 )
 frames = SubResource( 7 )
 animation = "AnimationFly"
-frame = 4
+frame = 2
 playing = true
 offset = Vector2( 0, -12 )
 

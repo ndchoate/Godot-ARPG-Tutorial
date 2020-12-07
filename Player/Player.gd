@@ -209,17 +209,19 @@ func shield_state(delta):
         state = MOVE
 
 
-func shield_animation_finished():
-#    state = MOVE
-    pass
-
-
 func move():
     velocity = move_and_slide(velocity)
 
 
 func _on_Hurtbox_area_entered(area):
-    stats.health -= area.damage
+    var current_health = stats.health - area.damage
+    stats.set_health(current_health)
+    
+    # Temporary solution for changing health UI until you get multiple players
+    # support properly working
+    var healthUI = get_node("/root/World/CanvasLayer/HealthUI")
+    healthUI.set_hearts(current_health)
+    
     hurtbox.start_invincibility(0.6)
     hurtbox.create_hit_effect()
     
